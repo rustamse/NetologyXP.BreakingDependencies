@@ -42,6 +42,15 @@ class State {
         this._baseTax = baseTax;
         this._taxByItemType = taxByItemType;
     };
+
+    calcTaxByItemType(itemType) {
+        var itemTypeTaxModifier = this._taxByItemType[itemType];
+
+        if (itemTypeTaxModifier === "") {
+            return 0;
+        }
+        return this._baseTax + itemTypeTaxModifier;
+    }
 }
 
 var states = [
@@ -111,6 +120,7 @@ function base(state) {
 
 function calcTaxByStateAndItemType(state, itemType) {
     var itemTypeTaxModifier = itemTypes[itemType];
+
     if (itemTypeTaxModifier[state] === "") {
         return 0;
     }
