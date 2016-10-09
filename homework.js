@@ -91,8 +91,7 @@ function base(state) {
     return taxes[state];
 }
 
-function calc(state, itemType) {
-
+function calcTaxByStateAndItemType(state, itemType) {
     var itemTypeTaxModifier = itemTypes[itemType];
     if (itemTypeTaxModifier[state] === "") {
         return 0;
@@ -116,7 +115,9 @@ class TaxCalculator {
     }
 
     calculatePriceFor(state, item) {
-        var result = calc(state, items[item].type) * items[item].price + items[item].price;
+        var totalTax = calcTaxByStateAndItemType(state, items[item].type);
+        var originalPrice = items[item].price;
+        var result = originalPrice * (1 + totalTax);
 
         return result;
     }
