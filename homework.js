@@ -97,10 +97,10 @@ class TaxCalculator {
     }
 
     calculatePriceByStateAndItem(stateObj, item) {
+        var itemObj = items[item];
 
-        var totalTax = stateObj.calcTaxByItemType(items[item].type);
-        var originalPrice = items[item].price;
-        return originalPrice * (1 + totalTax);
+        var totalTax = stateObj.calcTaxByItemType(itemObj.type);
+        return itemObj.price * (1 + totalTax);
     }
 }
 
