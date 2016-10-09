@@ -111,6 +111,10 @@ class TaxCalculator {
         }
         console.log(`----Have a nice day!-----`);
     }
+
+    calculatePriceFor(state, item) {
+        return 1;
+    }
 }
 
 //############################
@@ -130,7 +134,8 @@ var tests = [
 runTests(tests);
 
 function calculatePriceFor(state, item) {
-    return 1;
+    var taxCalculator = new TaxCalculator();
+    return taxCalculator.calculatePriceFor(state, item);
 }
 
 //############################
