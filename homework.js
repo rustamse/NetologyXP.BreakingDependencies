@@ -43,6 +43,10 @@ class State {
         this._taxByItemType = taxByItemType;
     };
 
+    get name() {
+        return this._name;
+    }
+
     calcTaxByItemType(itemType) {
         var itemTypeTaxModifier = this._taxByItemType[itemType];
 
@@ -143,7 +147,17 @@ class TaxCalculator {
     }
 
     calculatePriceFor(state, item) {
+
         var totalTax = calcTaxByStateAndItemType(state, items[item].type);
+        var originalPrice = items[item].price;
+        var result = originalPrice * (1 + totalTax);
+
+        return result;
+    }
+
+    calculatePriceByStateAndItem(stateObj, item) {
+
+        var totalTax = stateObj.calcTaxByItemType(items[item].type);
         var originalPrice = items[item].price;
         var result = originalPrice * (1 + totalTax);
 
@@ -169,7 +183,12 @@ runTests(tests);
 
 function calculatePriceFor(state, item) {
     var taxCalculator = new TaxCalculator();
-    return taxCalculator.calculatePriceFor(state, item);
+    var stateObj = findState(state);
+    return taxCalculator.calculatePriceByStateAndItem(stateObj, item);
+}
+
+function findState(state) {
+    return states.filter(s => s.name === state)[0];
 }
 
 //############################
