@@ -116,13 +116,7 @@ class TaxCalculator {
     }
 
     calculatePriceFor(state, item) {
-        var result = null;
-        if (items[item].type === "PreparedFood") {
-            result = ( 1 + base(state) ) * items[item].price;
-        }
-        else {
-            result = calc(state, items[item].type) * items[item].price + items[item].price;
-        }
+        var result = calc(state, items[item].type) * items[item].price + items[item].price;
 
         return result;
     }
