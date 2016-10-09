@@ -78,50 +78,6 @@ var items = {
     "ceasar salad": {price: 4.2, type: "PreparedFood"},
 };
 
-var itemTypes =
-{
-    "Groceries": {
-        "Alabama": 0,
-        "Alaska": 0,
-        "Arizona": "",
-        "Arkansas": 0.015,
-        "California": "",
-        "Colorado": "",
-        "Connecticut": ""
-    },
-    "PrescriptionDrug": {
-        "Alabama": "",
-        "Alaska": 0,
-        "Arizona": "",
-        "Arkansas": "",
-        "California": "",
-        "Colorado": "",
-        "Connecticut": ""
-    },
-    "PreparedFood": {
-        "Alabama": 0,
-        "Alaska": 0,
-        "Arizona": 0,
-        "Arkansas": 0,
-        "California": 0,
-        "Colorado": 0,
-        "Connecticut": 0
-    }
-};
-
-function base(state) {
-    var taxes = {
-        "Alabama": 0.04,
-        "Alaska": 0,
-        "Arizona": 0.056,
-        "Arkansas": 0.065,
-        "California": 0.075,
-        "Colorado": 0.029,
-        "Connecticut": 0.0635
-    };
-    return taxes[state];
-}
-
 class TaxCalculator {
     // У этой функции нелья менять интерфейс
     // Но можно менять содержимое
@@ -142,9 +98,7 @@ class TaxCalculator {
 
         var totalTax = stateObj.calcTaxByItemType(items[item].type);
         var originalPrice = items[item].price;
-        var result = originalPrice * (1 + totalTax);
-
-        return result;
+        return originalPrice * (1 + totalTax);
     }
 }
 
