@@ -36,6 +36,24 @@
 //############################
 // Этот код можно менять как угодно
 
+class State {
+    constructor(name, baseTax, taxByItemType) {
+        this._name = name;
+        this._baseTax = baseTax;
+        this._taxByItemType = taxByItemType;
+    };
+}
+
+var states = [
+    new State("Alabama", 0.04, {"Groceries": 0, "PrescriptionDrug": "", "PreparedFood": 0}),
+    new State("Alaska", 0, {"Groceries": 0, "PrescriptionDrug": 0, "PreparedFood": 0}),
+    new State("Arizona", 0.056, {"Groceries": "", "PrescriptionDrug": "", "PreparedFood": 0}),
+    new State("Arkansas", 0.065, {"Groceries": 0.015, "PrescriptionDrug": "", "PreparedFood": 0}),
+    new State("California", 0.075, {"Groceries": "", "PrescriptionDrug": "", "PreparedFood": 0}),
+    new State("Colorado", 0.029, {"Groceries": "", "PrescriptionDrug": "", "PreparedFood": 0}),
+    new State("Connecticut", 0.0635, {"Groceries": "", "PrescriptionDrug": "", "PreparedFood": 0})
+];
+
 var items = {
     "milk": {price: 5.5, type: "Groceries"},
     "eggs": {price: 3.0, type: "Groceries"},
