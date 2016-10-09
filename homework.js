@@ -66,6 +66,15 @@ var itemTypes =
         "California": "",
         "Colorado": "",
         "Connecticut": ""
+    },
+    "PreparedFood": {
+        "Alabama": 0,
+        "Alaska": 0,
+        "Arizona": 0,
+        "Arkansas": 0,
+        "California": 0,
+        "Colorado": 0,
+        "Connecticut": 0
     }
 };
 
