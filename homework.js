@@ -64,7 +64,8 @@ var states = [
     new State("Arkansas", 0.065, {"Groceries": 0.015, "PrescriptionDrug": "", "PreparedFood": 0}),
     new State("California", 0.075, {"Groceries": "", "PrescriptionDrug": "", "PreparedFood": 0}),
     new State("Colorado", 0.029, {"Groceries": "", "PrescriptionDrug": "", "PreparedFood": 0}),
-    new State("Connecticut", 0.0635, {"Groceries": "", "PrescriptionDrug": "", "PreparedFood": 0})
+    new State("Connecticut", 0.0635, {"Groceries": "", "PrescriptionDrug": "", "PreparedFood": 0}),
+    new State("Tennessee", 0.07, {"Groceries": 0.05, "PrescriptionDrug": 0, "PreparedFood": 0})
 ];
 
 var items = {
@@ -114,6 +115,9 @@ var tests = [
     () => assertEquals(6.7 * (1 + 0.0), calculatePriceFor("Alaska", "amoxicillin")),
     () => assertEquals(6.7 * (1 + 0.0), calculatePriceFor("California", "amoxicillin")),
     () => assertEquals(2 * (1 + 0.0635), calculatePriceFor("Connecticut", "hamburger")),
+    () => assertEquals(5.5 * (1 + 0.07 + 0.05), calculatePriceFor("Tennessee", "milk")),
+    () => assertEquals(0.2 * (1 + 0.07), calculatePriceFor("Tennessee", "aspirin")),
+    () => assertEquals(2 * (1 + 0.07), calculatePriceFor("Tennessee", "hamburger")),
 ];
 //Раскомментируйте следующую строчку для запуска тестов:
 runTests(tests);
