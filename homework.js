@@ -48,36 +48,36 @@ var items = {
 };
 
 var itemTypes =
-    {
-        "Groceries": {
-            "Alabama" : 0,
-            "Alaska" : 0,
-            "Arizona" : "",
-            "Arkansas" : 0.015,
-            "California" : "",
-            "Colorado" : "",
-            "Connecticut" : ""
-        },
-        "PrescriptionDrug": {
-            "Alabama" : "",
-            "Alaska" : 0,
-            "Arizona" : "",
-            "Arkansas" : "",
-            "California" : "",
-            "Colorado" : "",
-            "Connecticut" : ""
-        }
-    };
+{
+    "Groceries": {
+        "Alabama": 0,
+        "Alaska": 0,
+        "Arizona": "",
+        "Arkansas": 0.015,
+        "California": "",
+        "Colorado": "",
+        "Connecticut": ""
+    },
+    "PrescriptionDrug": {
+        "Alabama": "",
+        "Alaska": 0,
+        "Arizona": "",
+        "Arkansas": "",
+        "California": "",
+        "Colorado": "",
+        "Connecticut": ""
+    }
+};
 
 function base(state) {
     var taxes = {
-        "Alabama" : 0.04,
-        "Alaska" : 0,
-        "Arizona" : 0.056,
-        "Arkansas" : 0.065,
-        "California" : 0.075,
-        "Colorado" : 0.029,
-        "Connecticut" : 0.0635
+        "Alabama": 0.04,
+        "Alaska": 0,
+        "Arizona": 0.056,
+        "Arkansas": 0.065,
+        "California": 0.075,
+        "Colorado": 0.029,
+        "Connecticut": 0.0635
     };
     return taxes[state];
 }
@@ -115,7 +115,7 @@ class TaxCalculator {
 
 //############################
 //Production - код:
-production();
+//production();
 
 //############################
 //Тесты:
@@ -127,47 +127,57 @@ var tests = [
     () => assertEquals(2 * (1 + 0.0635), calculatePriceFor("Connecticut", "hamburger")),
 ];
 //Раскомментируйте следующую строчку для запуска тестов:
-//runTests (tests);
+runTests(tests);
+
+function calculatePriceFor(state, item) {
+    return 1;
+}
 
 //############################
 //Код ниже этой строчки не надо менять для выполнения домашней работы
 
-function production(){
+function production() {
     var calculator = new TaxCalculator();
     calculator.calculateTax();
 }
 
-function getSelectedItem(){
+function getSelectedItem() {
     var items = ["milk", "eggs", "coca-cola", "amoxicillin", "aspirin", "marijuana", "hamburger", "ceasar salad"];
     return items[Math.floor(Math.random() * items.length)];
 }
 
-function getSelectedState(){
+function getSelectedState() {
     var state = ["Alabama", "Alaska", "Arizona", "Arkansas", "California", "Colorado", "Connecticut"];
     return state[Math.floor(Math.random() * state.length)];
 }
 
-function getOrdersCount(){
+function getOrdersCount() {
     return Math.floor(Math.random() * 3) + 1;
 }
 
 //############################
 // Кустарный способ писать тесты
 
-function assertEquals (expected, actual) {
+function assertEquals(expected, actual) {
     var epsilon = 0.000001;
     var difference = Math.abs(expected - actual);
-    if ( difference > epsilon || difference === undefined || isNaN(difference)) {
-        console.log(`Fail! Expected: ${expected}, Actual: ${actual}` );
+    if (difference > epsilon || difference === undefined || isNaN(difference)) {
+        console.log(`Fail! Expected: ${expected}, Actual: ${actual}`);
         return -1;
     }
     return 0;
 }
 
-function runTests (tests) {
+function runTests(tests) {
     var failedTests = tests
         .map((f) => f())
-        .map((code) => {if (code === -1) {return 1} else {return 0}})
+        .map((code) => {
+            if (code === -1) {
+                return 1
+            } else {
+                return 0
+            }
+        })
         .reduce((a, b) => a + b, 0);
 
     if (failedTests === 0) {
