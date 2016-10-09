@@ -122,15 +122,6 @@ function base(state) {
     return taxes[state];
 }
 
-function calcTaxByStateAndItemType(state, itemType) {
-    var itemTypeTaxModifier = itemTypes[itemType];
-
-    if (itemTypeTaxModifier[state] === "") {
-        return 0;
-    }
-    return base(state) + itemTypeTaxModifier[state];
-}
-
 class TaxCalculator {
     // У этой функции нелья менять интерфейс
     // Но можно менять содержимое
