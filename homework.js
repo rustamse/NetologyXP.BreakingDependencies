@@ -37,10 +37,10 @@
 // Этот код можно менять как угодно
 
 class State {
-    constructor(name, baseTax, taxByItemType) {
+    constructor(name, baseTax, taxesByItemType) {
         this._name = name;
         this._baseTax = baseTax;
-        this._taxByItemType = taxByItemType;
+        this._taxByItemType = taxesByItemType;
     };
 
     get name() {
