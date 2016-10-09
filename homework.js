@@ -100,20 +100,22 @@ class TaxCalculator {
         console.log(`----------${state}-----------`);
         for (var i = 0; i < ordersCount; i++) {
             var item = getSelectedItem();
-            var result = null;
-            if (items[item].type === "PreparedFood") {
-                result = ( 1 + base(state) ) * items[item].price;
-            }
-            else {
-                result = calc(state, items[item].type) * items[item].price + items[item].price;
-            }
+            var result = calculatePriceFor(state, item);
             console.log(`${item}: $${result.toFixed(2)}`);
         }
         console.log(`----Have a nice day!-----`);
     }
 
     calculatePriceFor(state, item) {
-        return 1;
+        var result = null;
+        if (items[item].type === "PreparedFood") {
+            result = ( 1 + base(state) ) * items[item].price;
+        }
+        else {
+            result = calc(state, items[item].type) * items[item].price + items[item].price;
+        }
+
+        return result;
     }
 }
 
